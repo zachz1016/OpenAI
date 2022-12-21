@@ -4,8 +4,8 @@
 function onSubmit(e) {
     e.preventDefault();
 
-    // document.querySelector('.msg').textContent = '';
-    // document.querySelector('#AIText').src= '';
+    // document.querySelector('msg').textContent = '';
+    // document.querySelector('result')= '';
 
     const prompt = document.querySelector('#prompt').value;
 
