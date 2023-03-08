@@ -12,9 +12,9 @@
         <form id="form">
             <h2>Enter some text</h2>
             <div>
-                <input type="text" id="prompt" placeholder="enter text" />
+                <input type="text" id="prompt1" placeholder="enter text" />
             </div>
-            <button type="submit" class="button">Complete</button>
+            <button type="submit" class="btn">Complete</button>
         </form>
     </section>
     <section class="AIText">
@@ -23,5 +23,58 @@
             <div class="result" id="result"></div>
         </div>
     </section>
+        <header>
+      <div class="navbar">
+        <div class="logo">
+          <h2>OpenAI Image Genrator</h2>
+        </div>
+        <div class="nav-links">
+          <ul>
+            <li>
+              <a href="https://beta.openai.com/docs" target="_blank"
+                >OpenAI API Docs</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="showcase">
+        <form id="image-form">
+          <h1>Describe An Image</h1>
+          <div class="form-control">
+            <input type="text" id="prompt" placeholder="Enter Text" />
+          </div>
+          <!-- number -->
+          <div class="form-control">
+            <select name="number" id="number">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+            </select>
+          <!-- size -->
+          <div class="form-control">
+            <select name="size" id="size">
+              <option value="small">Small</option>
+              <option value="medium" selected>Medium</option>
+              <option value="large">Large</option>
+            </select>
+          </div>
+          <button type="submit" class="btn">Generate</button>
+        </form>
+      </section>
+
+      <section class="image">
+        <div class="image-container">
+          <h2 class="msg"></h2>
+          <img src="" alt="" id="image" />
+        </div>
+      </section>
+    </main>
+
+    <div class="spinner"></div>
+
 </body>
 </html>

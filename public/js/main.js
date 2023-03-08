@@ -1,25 +1,37 @@
 // import { generateText } from "../../controllers/openaiController";
 // import { post } from "../../routes/openaiRoutes";
 
+const { generateImage, generateText } = require("../../controllers/openaiController");
+
 function onSubmit(e) {
     e.preventDefault();
 
     // document.querySelector('msg').textContent = '';
     // document.querySelector('result')= '';
 
-    const prompt = document.querySelector('#prompt').value;
+    const prompt1 = document.querySelector('#prompt1').value;
 
-    if (prompt === ''){
+    document.querySelector('.msg').textContent = '';
+    document.querySelector('#image').src = '';
+
+    const prompt = document.querySelector('#prompt').value;
+    const number = document.querySelector('#number').value;
+    const size = document.querySelector('#size').value;
+
+    if (prompt1 === '' || prompt === ''){
         alert("Please fill in something")
         return;
     }
 
     //console.log(prompt);
-    generateTextRequest(prompt);
+    generateText(prompt1);
+    generateImage(prompt, number, size);
 }
 
-async function generateTextRequest(prompt){
+async function generateText(prompt){
     try {
+
+        showSpinner();
         const response = await fetch('/openai/generateText',{
             method: 'POST',
             headers: {
@@ -43,5 +55,48 @@ async function generateTextRequest(prompt){
         document.querySelector('.msg').textContent = error;
     }
 }
+async function generateImage(prompt, number, size) {
+  try {
+    showSpinner();
+
+    const response = await fetch('/openai/generateimage', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        prompt,
+        number,
+        size,
+      }),
+    });
+
+    if (!response.ok) {
+      removeSpinner();
+      throw new Error('That image could not be generated');
+    }
+
+    const data = await response.json();
+    // console.log(data);
+
+    const imageUrl = data.data;
+
+    document.querySelector('#image').src = imageUrl;
+
+    removeSpinner();
+  } catch (error) {
+    document.querySelector('.msg').textContent = error;
+  }
+}
+
+function showSpinner() {
+  document.querySelector('.spinner').classList.add('show');
+}
+
+function removeSpinner() {
+  document.querySelector('.spinner').classList.remove('show');
+}
+
+document.querySelector('#image-form').addEventListener('submit', onSubmit);
 
 document.querySelector('#form').addEventListener('submit',onSubmit);
