@@ -1,7 +1,7 @@
 // import { generateText } from "../../controllers/openaiController";
 // import { post } from "../../routes/openaiRoutes";
 
-const { generateImage, generateText } = require("../../controllers/openaiController");
+//const { generateImage, generateText } = require("../../controllers/openaiController");
 
 function onSubmit(e) {
     e.preventDefault();
@@ -9,53 +9,52 @@ function onSubmit(e) {
     // document.querySelector('msg').textContent = '';
     // document.querySelector('result')= '';
 
-    const prompt1 = document.querySelector('#prompt1').value;
+    //const prompt1 = document.querySelector('#prompt1').value;
 
     document.querySelector('.msg').textContent = '';
     document.querySelector('#image').src = '';
 
     const prompt = document.querySelector('#prompt').value;
-    const number = document.querySelector('#number').value;
     const size = document.querySelector('#size').value;
 
-    if (prompt1 === '' || prompt === ''){
+    if ( prompt === ''){
         alert("Please fill in something")
         return;
     }
 
     //console.log(prompt);
-    generateText(prompt1);
-    generateImage(prompt, number, size);
+    //generateText(prompt1);
+    generateImage(prompt, size);
 }
 
-async function generateText(prompt){
-    try {
+// async function generateText(prompt){
+//     try {
 
-        showSpinner();
-        const response = await fetch('/openai/generateText',{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                prompt
-            })
-        });
-        if (!response.ok){
-            throw new Error('text cannot generated')
-        }
+//         showSpinner();
+//         const response = await fetch('/openai/generateText',{
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 prompt
+//             })
+//         });
+//         if (!response.ok){
+//             throw new Error('text cannot generated')
+//         }
 
-        const resp = await response.json();
-        console.log(resp.data.choices[0].text);
-        const textContent = resp.data.choices[0].text;
-        //document.querySelector('.result') = textContent;
-        document.getElementById('result').innerHTML = textContent;
+//         const resp = await response.json();
+//         console.log(resp.data.choices[0].text);
+//         const textContent = resp.data.choices[0].text;
+//         //document.querySelector('.result') = textContent;
+//         document.getElementById('result').innerHTML = textContent;
 
-    } catch (error) {
-        document.querySelector('.msg').textContent = error;
-    }
-}
-async function generateImage(prompt, number, size) {
+//     } catch (error) {
+//         document.querySelector('.msg').textContent = error;
+//     }
+// }
+async function generateImage(prompt,size) {
   try {
     showSpinner();
 
@@ -66,8 +65,7 @@ async function generateImage(prompt, number, size) {
       },
       body: JSON.stringify({
         prompt,
-        number,
-        size,
+        size
       }),
     });
 
@@ -99,4 +97,4 @@ function removeSpinner() {
 
 document.querySelector('#image-form').addEventListener('submit', onSubmit);
 
-document.querySelector('#form').addEventListener('submit',onSubmit);
+//document.querySelector('#form').addEventListener('submit',onSubmit);

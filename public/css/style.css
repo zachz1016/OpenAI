@@ -9,7 +9,7 @@
 }
 
 :root {
-  --primary-color: #caaae1;
+  --primary-color: #97ca3e;
 }
 
 body {
@@ -42,7 +42,7 @@ body {
 .navbar a {
   color: #fff;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .navbar a:hover {

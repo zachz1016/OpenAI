@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/spinner.css" />
+    
     <script src="js/main.js" defer></script>
-    <title>OpenAI auto complete</title>
+    
+    <title>OpenAI Image </title>
 </head>
 <body>
+<!--     
     <section>
-        <form id="form">
+        <form id="form" class="form-control">
             <h2>Enter some text</h2>
             <div>
                 <input type="text" id="prompt1" placeholder="enter text" />
@@ -22,7 +27,7 @@
             <h3 class="msg"></h3>
             <div class="result" id="result"></div>
         </div>
-    </section>
+    </section> -->
         <header>
       <div class="navbar">
         <div class="logo">
@@ -43,22 +48,23 @@
     <main>
       <section class="showcase">
         <form id="image-form">
-          <h1>Describe An Image</h1>
+          <h1>Create An Image</h1>
+          <h1>AI 图片生成</h1>
           <div class="form-control">
             <input type="text" id="prompt" placeholder="Enter Text" />
           </div>
           <!-- number -->
-          <div class="form-control">
+          <!-- <div class="form-control">
             <select name="number" id="number">
               <option value="1">1</option>
               <option value="2" selected>2</option>
               <option value="3">3</option>
-            </select>
+            </select> -->
           <!-- size -->
           <div class="form-control">
             <select name="size" id="size">
-              <option value="small">Small</option>
-              <option value="medium" selected>Medium</option>
+              <option value="small" selected>Small</option>
+              <option value="medium">Medium</option>
               <option value="large">Large</option>
             </select>
           </div>
@@ -71,10 +77,29 @@
           <h2 class="msg"></h2>
           <img src="" alt="" id="image" />
         </div>
+        <br>
+        <br>
       </section>
     </main>
 
     <div class="spinner"></div>
+
+    <footer>
+    <div class="navbar">
+        <div class="logo">
+          <h2><br></h2>
+        </div>
+        <div class="nav-links">
+          <ul>
+            <li>
+              <a href="https://github.com/zachz1016" target="_blank"
+                >Zach's Github</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
 
 </body>
 </html>
